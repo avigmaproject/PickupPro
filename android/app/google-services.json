@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "785192141188",
+    "project_id": "pick-up-pro-6cdbd",
+    "storage_bucket": "pick-up-pro-6cdbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785192141188:android:bc4371b4be4037827a5dd1",
+        "android_client_info": {
+          "package_name": "com.pickup_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785192141188-fdgu9k4ds6c9iksa9uvbrl60tknnp5er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbOPyOL05YTf6oB6nhXE4a3bKOf399LSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785192141188-fdgu9k4ds6c9iksa9uvbrl60tknnp5er.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785192141188-i0ar6c6vfba5s4q0u7l6kdatdv2tmmsi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pickuppro.app",
+                "app_store_id": "1605540375"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

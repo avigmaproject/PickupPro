@@ -1,0 +1,6 @@
+module Pods_pickup_pro_pickup_proTests {
+  umbrella header "Pods-pickup_pro-pickup_proTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
