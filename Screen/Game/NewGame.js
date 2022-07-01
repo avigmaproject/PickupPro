@@ -240,6 +240,30 @@ class NewGame extends Component {
                 In your area{" "}
               </Text>
             </View>
+             {this.state.UserData.length === 0 &&  <View
+                      style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 40,
+                          color: "#2f363c",
+                        }}
+                      >
+                        No Court Found
+                        
+                      </Text>
+                        <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 20,
+                          color: "#2f363c",
+                        }}
+                      >
+                      Only court display near 1km of current location.
+                        
+                      </Text>
+                    </View>}
             <View style={{ marginHorizontal: 10 }}>
               <FlatList
                 horizontal={true}
@@ -330,28 +354,6 @@ class NewGame extends Component {
                     </View>
                   );
                 }}
-                ListEmptyComponent={() => {
-                  return (
-                    <View
-                      style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        flexDirection: "row",
-                        marginTop: 40,
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontFamily: "KanedaGothic-BoldItalic",
-                          fontSize: 40,
-                          color: "#2f363c",
-                        }}
-                      >
-                        No Court Found
-                      </Text>
-                    </View>
-                  );
-                }}
                 keyExtractor={(item) => item.Court_PkeyID}
               />
 
@@ -362,7 +364,7 @@ class NewGame extends Component {
                   marginBottom: 150,
                 }}
               >
-                {this.state.gameId ? (
+                {this.state.gameId && this.state.UserData.length >0 ? (
                   <CustomButton
                     title={"SELECT"}
                     onPress={() =>
@@ -373,10 +375,11 @@ class NewGame extends Component {
                     }
                   />
                 ) : (
-                  <CustomButton
-                    title={"SELECT"}
-                    onPress={() => alert("Please select location")}
-                  />
+                        null
+                  // <CustomButton
+                  //   title={"SELECT"}
+                  //   onPress={() => alert("Please select location")}
+                  // />
                 )}
               </View>
             </View>

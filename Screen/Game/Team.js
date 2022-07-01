@@ -567,6 +567,30 @@ export default class Team extends Component {
                 {this.state.captainname[0]}
               </Text>
             </View>
+            {this.state.UserData.length === 0 &&  <View
+                      style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 40,
+                          color: "#2f363c",
+                        }}
+                      >
+                        No Player Found
+                        
+                      </Text>
+                        <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 20,
+                          color: "#2f363c",
+                        }}
+                      >
+                      Only player display near 1km of current location.
+                        
+                      </Text>
+                    </View>}
             <View style={{ marginHorizontal: 10, flex: 1, marginBottom: 50 }}>
               <FlatList
                 numColumns={2}
@@ -672,6 +696,7 @@ export default class Team extends Component {
                 }}
                 keyExtractor={(item) => item.User_PkeyID}
               />
+               
               <View
                 style={{
                   alignItems: "center",
@@ -681,10 +706,16 @@ export default class Team extends Component {
                   // backgroundColor: "red",
                 }}
               >
-                <CustomButton2
+                {this.state.UserData.length !== 0 && 
+                    <CustomButton2
                   title={"NEXT"}
                   onPress={() => this.createPlayerJSON()}
                 />
+                }
+                {/* <CustomButton2
+                  title={"NEXT"}
+                  onPress={() => this.createPlayerJSON()}
+                /> */}
               </View>
             </View>
           </ScrollView>

@@ -556,7 +556,6 @@ export default class SelectCaptain extends Component {
       <View style={{ flex: 1 }}>
         <SafeAreaView>
           <Spinner visible={isLoading} />
-          {/* <HeaderArrow */}
           <Header
             title="Select captains"
             // navigation={this.props.navigation}
@@ -655,7 +654,7 @@ export default class SelectCaptain extends Component {
                   // To remove the underline from the android input
                 />
               )} */}
-              <View
+ {this.state.UserData.length !== 0 && (<View
                 style={{
                   width: "85%",
                   marginTop: 20,
@@ -700,7 +699,32 @@ export default class SelectCaptain extends Component {
                     />
                   </TouchableOpacity>
                 ) : null}
-              </View>
+              </View>) }
+              
+   {this.state.UserData.length === 0 &&  <View
+                      style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 40,
+                          color: "#2f363c",
+                        }}
+                      >
+                        No Player Found
+                        
+                      </Text>
+                        <Text
+                        style={{
+                          fontFamily: "KanedaGothic-BoldItalic",
+                          fontSize: 20,
+                          color: "#2f363c",
+                        }}
+                      >
+                      Only player display near 1km of current location.
+                        
+                      </Text>
+                    </View>}
               <View
                 style={{
                   marginHorizontal: 10,
@@ -836,46 +860,13 @@ export default class SelectCaptain extends Component {
 
                 <View style={{ width: "100%", marginBottom: 80 }}>
                   <View style={{ alignItems: "center", marginTop: 40 }}>
+                  {this.state.UserData.length !== 0 && 
                     <CustomButton
                       title={"PICK TEAMS"}
                       // onPress={() => this.props.navigation.navigate("Team")}
                       onPress={() => this.createPlayerJSON()}
                     />
-                    {/* {this.state.listPlayer.length !== 0 ? (
-                    <CustomButton
-                      title={"PICK TEAM"}
-                      onPress={() => this.createPlayerJSON()}
-                    />
-                  ) : (
-                    <CustomButton
-                      title={"PICK TEAMS"}
-                      onPress={() => alert("Only two players can choose")}
-                    />
-                  )} */}
-
-                    {/* <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate("Team")}
-                    style={{
-                      backgroundColor: "#4850CF",
-                      height: 50,
-                      width: "70%",
-                      borderRadius: 10,
-                      marginTop: 20,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      marginBottom: 50,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        fontSize: 20,
-                        marginRight: "3%",
-                      }}
-                    >
-                      PICK TEAM
-                    </Text>
-                  </TouchableOpacity> */}
+                       }
                   </View>
                 </View>
               </View>

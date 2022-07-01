@@ -3,9 +3,7 @@
   "version": "2.3.0",
   "summary": "React Native SegmentedControlIOS library",
   "license": "MIT",
-  "authors": {
-    "name": "M.Haris Baig"
-  },
+  "authors": "M.Haris Baig",
   "homepage": "https://github.com/react-native-community/segmented-control#readme",
   "platforms": {
     "ios": "9.0"
