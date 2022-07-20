@@ -9,7 +9,6 @@ import { releasplayerdata } from "./utils/ConfigApi";
 import { NavigationContainer } from "@react-navigation/native";
 import { Root } from "native-base";
 import MyStack from "./Navigation/StackNavigation";
-import MyStack2 from "./Navigation/StackNavigation1";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import messaging from "@react-native-firebase/messaging";
 import BackgroundGeolocation from "react-native-background-geolocation";
@@ -200,46 +199,11 @@ class App extends Component {
       <Root>
         <NavigationContainer>
           <MyStack />
-          {/* {token == null ? <MyStack /> : <MyStack2 />} */}
-
-          {/* {userToken == null ? <MyStack /> : <MyStack2 />} */}
         </NavigationContainer>
       </Root>
     );
   }
 }
-
-// const App = () => {
-//   const [token, settoken] = React.useState(null);
-//   const userToken = useSelector((state) => state.authReducer.userToken);
-//   const mode = useSelector((state) => state.authReducer.registerMode);
-//   // console.log("modemodemodemodeapp", mode);
-//   // console.log("userTokenApp", userToken);
-
-//   return (
-//     <Root>
-//       <NavigationContainer>
-//         <MyStack />
-//         {/* {token == null ? <MyStack /> : <MyStack2 />} */}
-
-//         {/* {userToken == null ? <MyStack /> : <MyStack2 />} */}
-//       </NavigationContainer>
-//     </Root>
-//   );
-// };
-
-// const App = () => (
-//   <Provider store={store}>
-//     <PersistGate loading={null} persistor={persistor}>
-//   <Root>
-//     <NavigationContainer>
-//       <MyStack />
-//     </NavigationContainer>
-//   </Root>
-//     </PersistGate>
-//   </Provider>
-// );
-
 const AppWrapper = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

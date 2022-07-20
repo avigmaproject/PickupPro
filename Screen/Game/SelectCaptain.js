@@ -63,10 +63,6 @@ export default class SelectCaptain extends Component {
   componentDidMount = () => {
     const { navigation } = this.props;
     this._unsubscribe = navigation.addListener("focus", () => {
-      console.log(
-        "this.props.route.params.gameId",
-        this.props.route.params.CourtData
-      );
       this.setState({
         gameid: this.props.route.params.gameId,
         CourtData: this.props.route.params.CourtData,
@@ -401,7 +397,7 @@ export default class SelectCaptain extends Component {
     }
   };
   getCaptainData = async () => {
-    this.textInput.clear();
+    // this.textInput.clear();
     // this.configureBackgroundLocation();
 
     this.setState({ isLoading: true });
@@ -670,9 +666,9 @@ export default class SelectCaptain extends Component {
                 <TextInput
                   placeholder="Search players"
                   style={{ marginLeft: 10, width: "85%" }}
-                  ref={(input) => {
-                    this.textInput = input;
-                  }}
+                  // ref={(input) => {
+                  //   this.textInput = input;
+                  // }}
                   // onEndEditing={() => this.getSearchData()}
                   onChangeText={(search) => {
                     this.setState({ search });
@@ -701,8 +697,8 @@ export default class SelectCaptain extends Component {
                 ) : null}
               </View>) }
               
-   {this.state.UserData.length === 0 &&  <View
-                      style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
+                  {this.state.UserData.length === 0 &&  <View
+                    style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
                     >
                       <Text
                         style={{

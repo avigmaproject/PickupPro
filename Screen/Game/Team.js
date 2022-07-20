@@ -52,15 +52,18 @@ export default class Team extends Component {
     // this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
   componentDidMount = async () => {
-    this.getLocation();
-    console.log("this.props.route.params.gameId", this.props.route.params);
+   this._unsubscribe = this.props.navigation.addListener("focus", async() => {
+      this.getLocation();
+    await this.getLatLong();
+    this.getAccessToken();
     this.setState({
       gameid: this.props.route.params.gameId,
       captainname: this.props.route.params.captainname,
     });
-    this.getAccessToken();
-    // this.getCaptainData();
-    // await this.getLatLong();
+    this.getCaptainData();
+
+    });
+    
   };
 
   // componentWillMount() {
@@ -81,18 +84,16 @@ export default class Team extends Component {
   //   this.props.navigation.goBack(null);
   //   return true;
   // }
-  // getLatLong = async () => {
-  //   const value = await AsyncStorage.multiGet(["latitude", "longitude"]);
-  //   const currentLatitude = JSON.parse(value[0][1]);
-  //   const currentLongitude = JSON.parse(value[1][1]);
-  //   this.setState(
-  //     {
-  //       currentLatitude: currentLatitude,
-  //       currentLongitude: currentLongitude,
-  //     }
-  //     // () => this.getSelectedTeam(),
-  //   );
-  // };
+  getLatLong = async () => {
+    const value = await AsyncStorage.multiGet(["latitude", "longitude"]);
+    const currentLatitude = JSON.parse(value[0][1]);
+    const currentLongitude = JSON.parse(value[1][1]);
+    this.setState({
+        currentLatitude: currentLatitude,
+        currentLongitude: currentLongitude,
+      });
+console.log("**********",this.state.currentLatitude,this.state.currentLongitude)
+  };
   getAccessToken = async () => {
     let token;
     try {
@@ -111,15 +112,17 @@ export default class Team extends Component {
   };
 
   getCaptainData = async () => {
+    console.log("getCaptainData")
     this.setState({ isLoading: true });
     let data = {
       Pagnumber: 1,
       NoOfRows: 100,
       Type: 3,
-      User_latitude: 19.039, // this.state.currentLatitude,
-      User_longitude: 72.8619, // this.state.currentLongitude,
+      User_latitude: this.state.currentLatitude,
+      User_longitude:  this.state.currentLongitude,
+      Game_PkeyID: this.state.gameid,
     };
-    console.log("data team", data);
+    console.log("=======data team left=======", data);
     await getcaptaindata(data, this.state.token)
       .then((res) => {
         console.log("res:teamdata ", res[0]);
@@ -567,7 +570,7 @@ export default class Team extends Component {
                 {this.state.captainname[0]}
               </Text>
             </View>
-            {this.state.UserData.length === 0 &&  <View
+            {/* {this.state.UserData.length === 0 &&  <View
                       style={{width:"100%",height:200,justifyContent:"center",alignItems:"center"  }}
                     >
                       <Text
@@ -590,7 +593,7 @@ export default class Team extends Component {
                       Only player display near 1km of current location.
                         
                       </Text>
-                    </View>}
+                    </View>} */}
             <View style={{ marginHorizontal: 10, flex: 1, marginBottom: 50 }}>
               <FlatList
                 numColumns={2}
@@ -706,16 +709,16 @@ export default class Team extends Component {
                   // backgroundColor: "red",
                 }}
               >
-                {this.state.UserData.length !== 0 && 
+                {/* {this.state.UserData.length !== 0 && 
                     <CustomButton2
                   title={"NEXT"}
                   onPress={() => this.createPlayerJSON()}
                 />
-                }
-                {/* <CustomButton2
+                } */}
+                <CustomButton2
                   title={"NEXT"}
                   onPress={() => this.createPlayerJSON()}
-                /> */}
+                />
               </View>
             </View>
           </ScrollView>
